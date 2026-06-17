@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revisão ENEM – 3º Ano | Rita Matos Luna</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+  :root {
+    --bg: #0d0f1a;
+    --surface: #151825;
+    --card: #1c2035;
+    --border: #2a2f4a;
+    --accent-lin: #f5a623;
+    --accent-hum: #4ecdc4;
+    --accent-red: #ff6b6b;
+    --accent-mat: #a78bfa;
+    --accent-nat: #6bcb77;
+    --text: #e8eaf0;
+    --muted: #8890a8;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #0d0f1a 0%, #1a1f3a 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 1.5rem 1.5rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .school-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  /* DAY TABS */
+  .day-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .day-btn {
+    padding: 0.45rem 1.2rem;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .day-btn.active {
+    background: var(--accent-lin);
+    color: #000;
+    border-color: var(--accent-lin);
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    gap: 0.4rem;
+    padding: 1rem 1.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  nav::-webkit-scrollbar { display: none; }
+
+  .nav-btn {
+    white-space: nowrap;
+    padding: 0.4rem 1rem;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .nav-btn:hover { border-color: var(--accent-lin); color: var(--text); }
+  .nav-btn.active { background: var(--card); color: var(--white); border-color: var(--accent-lin); }
+
+  /* MAIN */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 4rem;
+  }
+
+  /* SECTION */
+  .section { display: none; animation: fadeIn 0.3s ease; }
+  .section.visible { display: block; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* AREA BADGE */
+  .area-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.7rem;
+    border-radius: 99px;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .badge-lin { background: rgba(245,166,35,0.15); color: var(--accent-lin); }
+  .badge-hum { background: rgba(78,205,196,0.15); color: var(--accent-hum); }
+  .badge-red { background: rgba(255,107,107,0.15); color: var(--accent-red); }
+  .badge-nat { background: rgba(107,203,119,0.15); color: var(--accent-nat); }
+  .badge-mat { background: rgba(167,139,250,0.15); color: var(--accent-mat); }
+
+  /* TOPIC CARD */
+  .topic-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  .topic-header {
+    padding: 1rem 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+
+  .topic-header:hover { background: rgba(255,255,255,0.03); }
+
+  .topic-title {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .topic-sub {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+
+  .chevron {
+    color: var(--muted);
+    font-size: 1.1rem;
+    transition: transform 0.25s;
+    flex-shrink: 0;
+    margin-left: 0.5rem;
+  }
+
+  .topic-card.open .chevron { transform: rotate(180deg); }
+
+  .topic-body {
+    display: none;
+    padding: 0 1.2rem 1.2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .topic-card.open .topic-body { display: block; }
+
+  /* CONTENT BLOCKS */
+  .def-block {
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid var(--accent-lin);
+    border-radius: 0 8px 8px 0;
+    padding: 0.8rem 1rem;
+    margin: 0.8rem 0;
+    font-size: 0.88rem;
+  }
+
+  .def-block.hum { border-color: var(--accent-hum); }
+  .def-block.red { border-color: var(--accent-red); }
+  .def-block.nat { border-color: var(--accent-nat); }
+  .def-block.mat { border-color: var(--accent-mat); }
+
+  h3 {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 1rem 0 0.4rem;
+  }
+
+  h3:first-child { margin-top: 0.8rem; }
+
+  p { font-size: 0.88rem; color: var(--text); margin: 0.3rem 0; }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.3rem 0;
+  }
+
+  ul li {
+    font-size: 0.87rem;
+    padding: 0.25rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+    color: var(--text);
+  }
+
+  ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent-lin);
+    font-weight: 700;
+  }
+
+  ul.hum li::before { color: var(--accent-hum); }
+  ul.red li::before { color: var(--accent-red); }
+  ul.nat li::before { color: var(--accent-nat); }
+  ul.mat li::before { color: var(--accent-mat); }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.5rem 0;
+  }
+
+  .tag {
+    font-size: 0.72rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 99px;
+    background: rgba(245,166,35,0.1);
+    color: var(--accent-lin);
+    font-weight: 500;
+  }
+
+  .tag.hum { background: rgba(78,205,196,0.1); color: var(--accent-hum); }
+  .tag.red { background: rgba(255,107,107,0.1); color: var(--accent-red); }
+  .tag.nat { background: rgba(107,203,119,0.1); color: var(--accent-nat); }
+  .tag.mat { background: rgba(167,139,250,0.1); color: var(--accent-mat); }
+
+  .tip-box {
+    background: rgba(245,166,35,0.08);
+    border: 1px solid rgba(245,166,35,0.25);
+    border-radius: 8px;
+    padding: 0.7rem 0.9rem;
+    margin: 0.8rem 0;
+    font-size: 0.82rem;
+  }
+
+  .tip-box.hum { background: rgba(78,205,196,0.08); border-color: rgba(78,205,196,0.25); }
+  .tip-box.red { background: rgba(255,107,107,0.08); border-color: rgba(255,107,107,0.25); }
+
+  .tip-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: var(--accent-lin);
+    margin-bottom: 0.25rem;
+  }
+
+  .tip-label.hum { color: var(--accent-hum); }
+  .tip-label.red { color: var(--accent-red); }
+
+  .table-w { overflow-x: auto; margin: 0.7rem 0; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+  }
+
+  th {
+    background: rgba(255,255,255,0.05);
+    padding: 0.5rem 0.8rem;
+    text-align: left;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  td {
+    padding: 0.5rem 0.8rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: top;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  .progress-bar {
+    display: flex;
+    gap: 0.3rem;
+    margin-bottom: 1.5rem;
+    align-items: center;
+  }
+
+  .progress-text { font-size: 0.75rem; color: var(--muted); margin-left: auto; }
+
+  .section-intro {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.2rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  strong { color: var(--white); }
+  em { font-style: italic; color: var(--text); }
+
+  .author-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.6rem;
+    margin: 0.6rem 0;
+  }
+
+  .author-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.7rem 0.8rem;
+    font-size: 0.83rem;
+  }
+
+  .author-name { font-weight: 700; color: var(--white); font-size: 0.85rem; margin-bottom: 0.2rem; }
+  .author-works { color: var(--muted); font-size: 0.78rem; }
+
+  code {
+    background: rgba(167,139,250,0.15);
+    color: var(--accent-mat);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.85em;
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="school-tag">E.E.E.P. Rita Matos Luna · 3º Ano · 2026</div>
+  <h1>Revisão Completa – Simulado ENEM</h1>
+  <p class="subtitle">2º Período · Todos os conteúdos organizados por área</p>
+  <div class="day-tabs">
+    <button class="day-btn active" onclick="showDay('day1')">📚 1º Dia — Linguagens & Humanas</button>
+    <button class="day-btn" onclick="showDay('day2')">🔬 2º Dia — Natureza & Matemática</button>
+  </div>
+</header>
+
+<nav id="nav-day1">
+  <button class="nav-btn active" onclick="showSection('literatura')">Literatura</button>
+  <button class="nav-btn" onclick="showSection('gramatica')">Gramática</button>
+  <button class="nav-btn" onclick="showSection('redacao')">Redação</button>
+  <button class="nav-btn" onclick="showSection('ingles')">Inglês</button>
+  <button class="nav-btn" onclick="showSection('espanhol')">Espanhol</button>
+  <button class="nav-btn" onclick="showSection('filosofia')">Filosofia</button>
+  <button class="nav-btn" onclick="showSection('sociologia')">Sociologia</button>
+  <button class="nav-btn" onclick="showSection('historia')">História</button>
+  <button class="nav-btn" onclick="showSection('geografia')">Geografia</button>
+  <button class="nav-btn" onclick="showSection('educacao-fisica')">Educação Física</button>
+</nav>
+
+<nav id="nav-day2" style="display:none">
+  <button class="nav-btn active" onclick="showSection('quimica')">Química</button>
+  <button class="nav-btn" onclick="showSection('fisica')">Física</button>
+  <button class="nav-btn" onclick="showSection('biologia')">Biologia</button>
+  <button class="nav-btn" onclick="showSection('algebra')">Álgebra</button>
+  <button class="nav-btn" onclick="showSection('geometria')">Geometria</button>
+</nav>
+
+<main>
+
+<!-- ==================== LITERATURA ==================== -->
+<div class="section visible" id="sec-literatura">
+  <span class="area-badge badge-lin">Linguagens · Literatura</span>
+  <div class="section-intro">Prof. Kecylla · Foco: <strong>Modernismo 2ª Geração (Prosa)</strong> — autores, obras e análise poética.</div>
+
+  <div class="topic-card open">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Modernismo – 2ª Geração (Prosa)</div><div class="topic-sub">1930–1945 · Contexto e características gerais</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Contexto histórico</h3>
+      <p>A 2ª Geração Modernista surge após a Revolução de 1930. O Brasil vive urbanização, industrialização e tensões políticas (Era Vargas). A literatura se volta para o <strong>regionalismo crítico</strong>, a denúncia social e o interior do país.</p>
+      <h3>Características da prosa</h3>
+      <ul>
+        <li>Regionalismo com crítica social e econômica</li>
+        <li>Personagens marginalizados, pobres, nordestinos</li>
+        <li>Linguagem seca, objetiva, próxima da oralidade</li>
+        <li>Narrador distanciado ou com perspectiva interior</li>
+        <li>Temática: seca, migração, fome, latifúndio</li>
+      </ul>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        O ENEM adora relacionar o contexto histórico do Nordeste (seca, migração) com os temas literários. Conecte sempre obra → realidade social.
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Graciliano Ramos</div><div class="topic-sub">Vidas Secas · Estilo e análise</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Características do autor</h3>
+      <ul>
+        <li>Linguagem econômica, precisa, de pouquíssimas palavras</li>
+        <li>Foco na psicologia dos personagens (introspecção)</li>
+        <li>Crítica à desigualdade social e ao poder</li>
+        <li>Narrativa em 3ª pessoa com fluxo de consciência</li>
+        <li>Pessimismo e ironia marcantes</li>
+      </ul>
+      <h3>Vidas Secas (1938)</h3>
+      <div class="def-block">
+        <strong>Personagens:</strong> Fabiano, Sinhá Vitória, dois filhos, a cachorra Baleia.<br>
+        <strong>Enredo:</strong> Família de retirantes fugindo da seca no sertão nordestino. Cíclica — começa e termina com migração.<br>
+        <strong>Capítulos independentes:</strong> cada um foca num personagem, inclusive Baleia.
+      </div>
+      <h3>Temas centrais</h3>
+      <ul>
+        <li>Desumanização pela pobreza e ignorância imposta</li>
+        <li>Relação homem × natureza hostil</li>
+        <li>Linguagem como instrumento de poder</li>
+        <li>Ciclo da seca e da migração (estrutura circular)</li>
+      </ul>
+      <h3>Outras obras</h3>
+      <div class="tag-row">
+        <span class="tag">Caetés (1933)</span>
+        <span class="tag">São Bernardo (1934)</span>
+        <span class="tag">Angústia (1936)</span>
+        <span class="tag">Infância (1945)</span>
+        <span class="tag">Memórias do Cárcere (1953)</span>
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        Baleia sonhando com "campo de mandacaru" = desejo de vida × realidade de morte. A morte da cachorra é o ponto emocional mais cobrado. A narrativa circular indica que o ciclo de miséria não tem fim.
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Carlos Drummond de Andrade</div><div class="topic-sub">Poesia · Análise e características</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Características poéticas</h3>
+      <ul>
+        <li>Ironia e humor como recursos críticos</li>
+        <li>Poesia do cotidiano, do banal transformado em arte</li>
+        <li>Linguagem coloquial misturada com erudição</li>
+        <li>Temas: eu × mundo, família, tempo, amor, política</li>
+        <li>Verso livre, sem métrica rígida</li>
+      </ul>
+      <h3>Fases poéticas</h3>
+      <div class="table-w">
+        <table>
+          <tr><th>Fase</th><th>Característica</th><th>Obra representativa</th></tr>
+          <tr><td>Individualista</td><td>Angústia existencial, "pedra no caminho"</td><td>Alguma Poesia (1930)</td></tr>
+          <tr><td>Social</td><td>Crítica política, WWII, antifascismo</td><td>A Rosa do Povo (1945)</td></tr>
+          <tr><td>Universal</td><td>Tempo, memória, morte, amor</td><td>Claro Enigma (1951)</td></tr>
+        </table>
+      </div>
+      <h3>Poemas essenciais para o ENEM</h3>
+      <ul>
+        <li><strong>No Meio do Caminho</strong> — a "pedra" como obstáculo existencial</li>
+        <li><strong>José</strong> — desespero existencial, ausência de saída</li>
+        <li><strong>A Flor e a Náusea</strong> — resistência poética no mundo hostil</li>
+        <li><strong>Quadrilha</strong> — amor e desamor em cadeia irônica</li>
+        <li><strong>Poema de Sete Faces</strong> — o "gauche" (desajustado) no mundo</li>
+      </ul>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        O conceito de <strong>"gauche"</strong> (sinistro/canhoto/desajustado) resume o eu-lírico de Drummond: alguém que não se encaixa no mundo. Isso aparece muito em questões de interpretação.
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Rachel de Queiroz</div><div class="topic-sub">O Quinze · Características literárias</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Importância histórica</h3>
+      <p>Primeira mulher eleita para a Academia Brasileira de Letras. Pioneira do romance social nordestino. Escreveu <em>O Quinze</em> com apenas 20 anos.</p>
+      <h3>Características da escrita</h3>
+      <ul>
+        <li>Narrativa ágil, enxuta e objetiva</li>
+        <li>Temática feminina e social entrelaçadas</li>
+        <li>Regionalismo com sensibilidade psicológica</li>
+        <li>Personagens femininas com autonomia e reflexão</li>
+      </ul>
+      <h3>O Quinze (1930)</h3>
+      <div class="def-block">
+        <strong>Contexto:</strong> A grande seca de 1915 no Ceará.<br>
+        <strong>Personagens:</strong> Conceição (intelectual, independente) e Chico Bento (retirante com família).<br>
+        <strong>Duas narrativas paralelas:</strong> a seca vista pela elite e pelo sertanejo pobre.<br>
+        <strong>Tema central:</strong> seca, migração, posição da mulher, desigualdade social.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        Conceição é um marco: mulher que lê, pensa, não se casa por convenção. O ENEM frequentemente relaciona personagens femininas literárias com questões de gênero e emancipação.
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Jorge Amado</div><div class="topic-sub">Capitães da Areia · Regionalismo e denúncia social</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Características do autor</h3>
+      <ul>
+        <li>Linguagem lírica, sensorial e de forte engajamento político</li>
+        <li>Foco nas classes populares, marginalizados e na cultura afro-brasileira</li>
+        <li>Combinação de realismo cru com momentos de ternura e idealização</li>
+        <li>Temática: sincretismo religioso, capoeira, coronelismo e a vida urbana baiana</li>
+      </ul>
+      <h3>Capitães da Areia (1937)</h3>
+      <div class="def-block">
+        <strong>Personagens:</strong> Pedro Bala (líder), Sem-Pernas, Professor, Gato, Volta Seca, Dora.<br>
+        <strong>Enredo:</strong> Vida de um grupo de menores abandonados ("Capitães da Areia") que vivem em um trapiche em Salvador, sobrevivendo de furtos e confrontos com a polícia.<br>
+        <strong>Evolução política:</strong> A narrativa mostra os jovens não apenas como delinquentes, mas como vítimas do abandono estatal e social, culminando com Pedro Bala engajando-se na luta operária.
+      </div>
+      <h3>Temas centrais</h3>
+      <ul>
+        <li>Criminalidade infantil como consequência da desigualdade</li>
+        <li>Solidariedade e afeto no grupo (o trapiche como lar e Dora como figura materna/irmã/amante)</li>
+        <li>Crítica às instituições burguesas (polícia, orfanato, imprensa sensacionalista)</li>
+        <li>Liberdade como valor supremo dos jovens</li>
+      </ul>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        O ENEM costuma cobrar a humanização dos menores infratores e a denúncia social em <em>Capitães da Areia</em>. O livro foi queimado em praça pública na ditadura do Estado Novo sob acusação de fazer propaganda comunista.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== GRAMÁTICA ==================== -->
+<div class="section" id="sec-gramatica">
+  <span class="area-badge badge-lin">Linguagens · Gramática</span>
+  <div class="section-intro">Prof. Jorismar · Foco: <strong>Sintaxe do período simples</strong> — análise dos termos da oração.</div>
+
+  <div class="topic-card open">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Termos Essenciais da Oração</div><div class="topic-sub">Sujeito e Predicado</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Sujeito</h3>
+      <div class="def-block">Termo sobre o qual se declara algo. Concorda com o verbo em pessoa e número.</div>
+      <div class="table-w">
+        <table>
+          <tr><th>Tipo</th><th>Característica</th><th>Exemplo</th></tr>
+          <tr><td>Simples</td><td>Um núcleo</td><td><em>O aluno</em> estudou.</td></tr>
+          <tr><td>Composto</td><td>Dois+ núcleos</td><td><em>Pedro e Ana</em> vieram.</td></tr>
+          <tr><td>Oculto/Desinencial</td><td>Subentendido</td><td><em>(Eu)</em> Saí cedo.</td></tr>
+          <tr><td>Indeterminado</td><td>Não identificado</td><td><em>Dizem</em> que vai chover.</td></tr>
+          <tr><td>Inexistente</td><td>Orações sem sujeito</td><td>Há muita gente. / Choveu.</td></tr>
+        </table>
+      </div>
+      <h3>Predicado</h3>
+      <ul>
+        <li><strong>Verbal:</strong> núcleo é um verbo de ação. <em>O time venceu.</em></li>
+        <li><strong>Nominal:</strong> núcleo é um nome (predicativo). <em>A menina está triste.</em></li>
+        <li><strong>Verbo-nominal:</strong> dois núcleos. <em>Ela chegou cansada.</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Termos Integrantes da Oração</div><div class="topic-sub">Objeto direto, indireto, complemento nominal e agente da passiva</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <div class="table-w">
+        <table>
+          <tr><th>Termo</th><th>Função</th><th>Exemplo</th></tr>
+          <tr><td>Objeto Direto</td><td>Complementa VTD sem preposição</td><td>Comprei <em>um livro</em>.</td></tr>
+          <tr><td>Objeto Indireto</td><td>Complementa VTI com preposição</td><td>Gosto <em>de música</em>.</td></tr>
+          <tr><td>Complemento Nominal</td><td>Complementa nome com preposição</td><td>Tenho medo <em>de altura</em>.</td></tr>
+          <tr><td>Agente da Passiva</td><td>Pratica ação na voz passiva</td><td>O bolo foi feito <em>pela Ana</em>.</td></tr>
+        </table>
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        OD × Complemento Nominal: se o termo complementa VERBO → OD/OI. Se complementa NOME → Complemento Nominal. Ex: "Tenho <strong>necessidade</strong> de estudo" — "de estudo" complementa o substantivo "necessidade".
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Termos Acessórios da Oração</div><div class="topic-sub">Adjunto, aposto e vocativo</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <div class="table-w">
+        <table>
+          <tr><th>Termo</th><th>Função</th><th>Exemplo</th></tr>
+          <tr><td>Adjunto Adnominal</td><td>Modifica substantivo</td><td><em>O belo</em> dia chegou.</td></tr>
+          <tr><td>Adjunto Adverbial</td><td>Modifica verbo/adj/advérbio</td><td>Estudei <em>muito ontem</em>.</td></tr>
+          <tr><td>Aposto</td><td>Explica ou resume um termo</td><td>Machado, <em>o maior escritor</em>, morreu in 1908.</td></tr>
+          <tr><td>Vocativo</td><td>Interpela o interlocutor</td><td><em>Ana</em>, venha aqui!</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Sintaxe do Período Composto</div><div class="topic-sub">Coordenação e Subordinação · Relações semânticas</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Período Composto por Coordenação</h3>
+      <p>Orações independentes sintaticamente. Podem ser:</p>
+      <ul>
+        <li><strong>Assindéticas:</strong> sem conectivo. <em>"Cheguei, vi, venci."</em></li>
+        <li><strong>Sindéticas:</strong> introduzidas por conjunção coordenativa:
+          <ul>
+            <li><strong>Aditivas:</strong> e, mas também. <em>"Estudou e passou."</em></li>
+            <li><strong>Adversativas:</strong> mas, porém, contudo, todavia. <em>"Estudou, mas não passou."</em></li>
+            <li><strong>Alternativas:</strong> ou...ou, quer...quer. <em>"Ou estuda ou trabalha."</em></li>
+            <li><strong>Conclusivas:</strong> logo, portanto, por isso. <em>"Estudei, logo passarei."</em></li>
+            <li><strong>Explicativas:</strong> pois, porque, que. <em>"Apresse-se, que já é tarde."</em></li>
+          </ul>
+        </li>
+      </ul>
+      <h3>Período Composto por Subordinação</h3>
+      <p>Uma oração exerce função sintática em relação à principal. Divide-se em:</p>
+      <ul>
+        <li><strong>Substantivas:</strong> equivalem a um substantivo (subjetiva, objetiva direta, objetiva indireta, completiva nominal, predicativa, apositiva). Introduzidas por integrantes (que, se).</li>
+        <li><strong>Adjetivas:</strong> equivalem a um adjetivo. Introduzidas por pronomes relativos (que, quem, cujo):
+          <ul>
+            <li><strong>Explicativas:</strong> com vírgula. <em>"O homem, que é mortal, peca."</em></li>
+            <li><strong>Restritivas:</strong> sem vírgula. <em>"Os alunos que estudaram passaram."</em></li>
+          </ul>
+        </li>
+        <li><strong>Adverbiais:</strong> equivalem a um adverbio. Relações de causa, concessão, condição, conformidade, consequência, comparação, tempo, proporção e finalidade.</li>
+      </ul>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        O ENEM foca muito no valor semântico das conjunções, principalmente as adversativas (oposição) e as concessivas (contraste que não impede a ação principal, ex: <em>embora, conquanto, ainda que</em>). Mudar o conectivo altera o sentido e a coesão do texto.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== REDAÇÃO ==================== -->
+<div class="section" id="sec-redacao">
+  <span class="area-badge badge-red">Linguagens · Redação</span>
+  <div class="section-intro">Prof. Adria · Foco: <strong>Repertório sociocultural e microestrutura</strong> — Como fazer uma Redação Nota 1000.</div>
+
+  <div class="topic-card open">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Análise de Obras para Repertório</div><div class="topic-sub">Como usar literatura na redação</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>O que é repertório sociocultural?</h3>
+      <div class="def-block red">Citação de obras literárias, filosóficas, artísticas, históricas ou científicas para embasar sua argumentação. Vale até 200 pontos na Competência II.</div>
+      <h3>Como usar corretamente</h3>
+      <ul class="red">
+        <li>Apresente o autor/obra + relacione ao tema da redação</li>
+        <li>Nunca cite de forma isolada — conecte à sua tese</li>
+        <li>Use verbos de atribuição: <em>segundo, para, conforme, de acordo com</em></li>
+        <li>Pode ser: livro, filme, música, dado estatístico, lei, evento histórico</li>
+      </ul>
+      <h3>Exemplos práticos</h3>
+      <div class="def-block red">
+        <strong>Tema: violência</strong> → "Em <em>Vidas Secas</em>, Graciliano Ramos retrata como a ausência de condições básicas de vida pode levar à brutalização dos indivíduos, reflexo do que ocorre na sociedade contemporânea..."
+      </div>
+      <div class="def-block red">
+        <strong>Tema: desigualdade social</strong> → "Rachel de Queiroz, em <em>O Quinze</em>, expõe como a seca evidencia a cruel estratificação social brasileira, onde os mais pobres arcam com os maiores ônus..."
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Repertórios por Eixo Temático</div><div class="topic-sub">Banco de referências organizadas</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Eixo: Educação</h3>
+      <div class="def-block red">Paulo Freire (<em>Pedagogia do Oprimido</em>) · ONU / UNESCO · Anísio Teixeira · Dados PISA/IDEB</div>
+      <h3>Eixo: Tecnologia / Redes Sociais</h3>
+      <div class="def-block red">Zygmunt Bauman (modernidade líquida) · George Orwell (<em>1984</em>) · Byung-Chul Han · LGPD</div>
+      <h3>Eixo: Violência / Segurança</h3>
+      <div class="def-block red">Foucault (<em>Vigiar e Punir</em>) · Dados do Atlas da Violência · Hannah Arendt</div>
+      <h3>Eixo: Meio Ambiente</h3>
+      <div class="def-block red">Acordo de Paris · Constituição Art. 225 · Rachel Carson · Dados do INPE</div>
+      <h3>Eixo: Desigualdade Social</h3>
+      <div class="def-block red">Vidas Secas / O Quinze · Marx (luta de classes) · Dados IBGE/IPEA · Sérgio Buarque</div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Redação Nota 1000 – Microestrutura</div><div class="topic-sub">Coesão, coerência e estrutura textual</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>As 5 Competências</h3>
+      <div class="table-w">
+        <table>
+          <tr><th>Comp.</th><th>O que avalia</th><th>Pontos</th></tr>
+          <tr><td>I</td><td>Domínio da escrita formal / gramática</td><td>200</td></tr>
+          <tr><td>II</td><td>Compreensão do tema + repertório</td><td>200</td></tr>
+          <tr><td>III</td><td>Seleção e organização de argumentos</td><td>200</td></tr>
+          <tr><td>IV</td><td>Coesão textual (conectivos)</td><td>200</td></tr>
+          <tr><td>V</td><td>Proposta de intervenção detalhada</td><td>200</td></tr>
+        </table>
+      </div>
+      <h3>Microestrutura – Conectivos essenciais</h3>
+      <ul class="red">
+        <li><strong>Adição:</strong> além disso, ademais, outrossim, também</li>
+        <li><strong>Contraste:</strong> entretanto, contudo, todavia, no entanto</li>
+        <li><strong>Causa/Consequência:</strong> portanto, logo, assim, por isso, dessa forma</li>
+        <li><strong>Exemplificação:</strong> por exemplo, a título de ilustração, como</li>
+        <li><strong>Conclusão:</strong> conclui-se que, em suma, diante do exposto</li>
+      </ul>
+      <h3>Estrutura da proposta de intervenção (Comp. V)</h3>
+      <div class="def-block red">
+        Quem faz? (Agente) → O quê? (Ação) → Como? (Modo/Meio) → Para quê? (Finalidade) → Com qual efeito? (Resultado esperado)
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Modelagem de Parágrafo e Repertórios Curinga</div><div class="topic-sub">Estrutura do Desenvolvimento (D1/D2) e referências universais</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Estrutura Padrão do Desenvolvimento (D1 e D2)</h3>
+      <div class="def-block red">
+        <strong>1. Tópico Frasal:</strong> Apresentação direta do argumento/problema do parágrafo (1 frase).<br>
+        <strong>2. Repertório / Embasamento:</strong> Apresentação do repertório legitimado e produtivo (1 a 2 frases).<br>
+        <strong>3. Discussão / Crítica:</strong> Relação do repertório com o tema e aprofundamento crítico da problemática (2 a 3 frases).<br>
+        <strong>4. Fechamento / Conclusão:</strong> Frase reflexiva ou de impacto que sintetiza o parágrafo (1 frase).
+      </div>
+      <h3>Repertórios Curinga (Se aplicam a quase qualquer tema)</h3>
+      <ul>
+        <li><strong>Constituição Federal de 1988 (Art. 5º ou 6º):</strong> Garante direitos universais (segurança, saúde, educação, igualdade). Ideal para apontar a lacuna entre a lei (teoria) e a realidade social (prática).</li>
+        <li><strong>Cidadãos de Papel (Gilberto Dimenstein):</strong> Defende que a falta de aplicação prática dos direitos constitucionais reduz os indivíduos a cidadãos apenas no papel.</li>
+        <li><strong>Modernidade Líquida (Zygmunt Bauman):</strong> Explica a fragilidade das relações humanas, o individualismo e a mercantilização das esferas sociais na atualidade.</li>
+        <li><strong>Banalidade do Mal (Hannah Arendt):</strong> Mostra como a repetição de comportamentos nocivos ou a omissão social faz com que os indivíduos achem a violência ou a negligência "comuns".</li>
+      </ul>
+      <div class="tip-box red">
+        <div class="tip-label red">⚡ Dica ENEM</div>
+        Sempre que usar a Constituição, use a estratégia da <strong>dissonância constitucional</strong>: "Embora a Carta Magna de 1988 assegure o direito à [tema], observa-se, na prática, que essa garantia não se concretiza de forma plena..." Isso garante produtividade imediata ao repertório!
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== INGLÊS ==================== -->
+<div class="section" id="sec-ingles">
+  <span class="area-badge badge-lin">Linguagens · Inglês</span>
+  <div class="section-intro">Prof. Wendy · Foco: <strong>Verbos modais de obrigação e interpretação textual.</strong></div>
+
+  <div class="topic-card open">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Should, Must e Have to</div><div class="topic-sub">Modais de obrigação, conselho e necessidade</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <div class="table-w">
+        <table>
+          <tr><th>Modal</th><th>Uso</th><th>Exemplo</th></tr>
+          <tr><td><code>Should</code></td><td>Conselho, recomendação (dever moral leve)</td><td>You <strong>should</strong> study more.</td></tr>
+          <tr><td><code>Must</code></td><td>Obrigação interna/pessoal forte</td><td>I <strong>must</strong> finish this today.</td></tr>
+          <tr><td><code>Have to</code></td><td>Obrigação externa (regra, lei, circunstância)</td><td>She <strong>has to</strong> wear a uniform.</td></tr>
+          <tr><td><code>Must not</code></td><td>Proibição</td><td>You <strong>must not</strong> smoke here.</td></tr>
+          <tr><td><code>Don't have to</code></td><td>Ausência de obrigação (não precisa)</td><td>You <strong>don't have to</strong> come.</td></tr>
+        </table>
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        <strong>Must not ≠ Don't have to!</strong> "Must not" = proibição. "Don't have to" = não é necessário (mas pode se quiser). Essa diferença cai muito!
+      </div>
+      <h3>Forma negativa e interrogativa</h3>
+      <ul>
+        <li><em>Should not / Shouldn't</em> → não deveria</li>
+        <li><em>Should I...? / Must I...?</em> → devo...?</li>
+        <li>Have to → 3ª pessoa singular: <strong>has to</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Interpretação Textual em Inglês</div><div class="topic-sub">Estratégias para o ENEM</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Estratégias de leitura</h3>
+      <ul>
+        <li><strong>Skimming:</strong> leitura rápida para ideia geral</li>
+        <li><strong>Scanning:</strong> busca de informação específica</li>
+        <li><strong>Cognates:</strong> palavras parecidas com o português (international, culture...)</li>
+        <li>Observe: título, imagens, gráficos, enunciado da questão</li>
+      </ul>
+      <h3>Vocabulário frequente no ENEM</h3>
+      <div class="tag-row">
+        <span class="tag">however = porém</span>
+        <span class="tag">although = embora</span>
+        <span class="tag">therefore = portanto</span>
+        <span class="tag">despite = apesar de</span>
+        <span class="tag">whereas = enquanto</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Falsos Cognatos (False Friends)</div><div class="topic-sub">Armadilhas de vocabulário no ENEM</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>O que são?</h3>
+      <p>Palavras que têm escrita ou pronúncia semelhante a palavras do português, mas cujos significados reais são completamente diferentes.</p>
+      <div class="table-w">
+        <table>
+          <tr><th>Palavra em Inglês</th><th>O que parece</th><th>Significado Real</th></tr>
+          <tr><td><code>Actually</code></td><td>Atualmente</td><td>Na verdade, realmente</td></tr>
+          <tr><td><code>Pretend</code></td><td>Pretender</td><td>Fingir</td></tr>
+          <tr><td><code>Intend</code></td><td>Entender</td><td>Pretender, ter a intenção de</td></tr>
+          <tr><td><code>Realize</code></td><td>Realizar (fazer)</td><td>Perceber, dar-se conta</td></tr>
+          <tr><td><code>Novel</code></td><td>Novela</td><td>Romance (livro)</td></tr>
+          <tr><td><code>Push</code></td><td>Puxar</td><td>Empurrar</td></tr>
+          <tr><td><code>Pull</code></td><td>Pular</td><td>Puxar</td></tr>
+          <tr><td><code>Lecture</code></td><td>Leitura</td><td>Palestra, aula expositiva</td></tr>
+          <tr><td><code>Library</code></td><td>Livraria</td><td>Biblioteca</td></tr>
+        </table>
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        Textos acadêmicos ou jornalísticos no ENEM usam muito <em>actually</em> e <em>realize</em>. Se você traduzir de forma errada, pode errar a interpretação do argumento central do autor. Fique atento!
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ESPANHOL ==================== -->
+<div class="section" id="sec-espanhol">
+  <span class="area-badge badge-lin">Linguagens · Espanhol</span>
+  <div class="section-intro">Prof. Larissa · Foco: <strong>Expressões idiomáticas, interpretação e Futuro Simples.</strong></div>
+
+  <div class="topic-card open">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Expressões Idiomáticas</div><div class="topic-sub">Modismos e frases feitas em espanhol</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <div class="def-block">Expressões idiomáticas são frases cujo significado não pode ser deduzido palavra por palavra. São muito cobradas em interpretação de texto no ENEM.</div>
+      <div class="table-w">
+        <table>
+          <tr><th>Expressão</th><th>Tradução literal</th><th>Significado real</th></tr>
+          <tr><td>No hay mal que por bien no venga</td><td>Não há mal que por bem não venha</td><td>Tudo tem um lado positivo</td></tr>
+          <tr><td>Estar en las nubes</td><td>Estar nas nuvens</td><td>Estar distraído</td></tr>
+          <tr><td>Costar un ojo de la cara</td><td>Custar um olho da cara</td><td>Ser muito caro</td></tr>
+          <tr><td>Meter la pata</td><td>Meter o pé</td><td>Cometer um erro</td></tr>
+          <tr><td>Tomar el pelo</td><td>Pegar o cabelo</td><td>Zoar / enganar alguém</td></tr>
+          <tr><td>Hablar por los codos</td><td>Falar pelos cotovelos</td><td>Falar demais</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Futuro Simples (Futuro Imperfecto)</div><div class="topic-sub">Conjugação e uso</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Formação — mesma terminação para AR, ER, IR</h3>
+      <div class="table-w">
+        <table>
+          <tr><th>Pronome</th><th>Terminação</th><th>Hablar</th><th>Comer</th><th>Vivir</th></tr>
+          <tr><td>Yo</td><td>-é</td><td>hablaré</td><td>comeré</td><td>viviré</td></tr>
+          <tr><td>Tú</td><td>-ás</td><td>hablarás</td><td>comerás</td><td>vivirás</td></tr>
+          <tr><td>Él/Ella</td><td>-á</td><td>hablará</td><td>comerá</td><td>vivirá</td></tr>
+          <tr><td>Nosotros</td><td>-emos</td><td>hablaremos</td><td>comeremos</td><td>viviremos</td></tr>
+          <tr><td>Vosotros</td><td>-éis</td><td>hablaréis</td><td>comeréis</td><td>viviréis</td></tr>
+          <tr><td>Ellos</td><td>-án</td><td>hablarán</td><td>comerán</td><td>vivirán</td></tr>
+        </table>
+      </div>
+      <h3>Verbos irregulares no futuro</h3>
+      <div class="tag-row">
+        <span class="tag">poder → podr-</span>
+        <span class="tag">tener → tendr-</span>
+        <span class="tag">venir → vendr-</span>
+        <span class="tag">hacer → har-</span>
+        <span class="tag">saber → sabr-</span>
+        <span class="tag">querer → querr-</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Falsos Amigos (Heterosemánticos)</div><div class="topic-sub">Palavras semelhantes com significados distintos</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>O que são?</h3>
+      <p>Palavras grafadas de forma idêntica ou parecida no português e no espanhol, mas que possuem significados completamente diferentes em cada idioma.</p>
+      <div class="table-w">
+        <table>
+          <tr><th>Palabra en Español</th><th>O que parece</th><th>Significado Real</th></tr>
+          <tr><td><code>Exquisito</code></td><td>Esquisito (estranho)</td><td>Delicioso, saboroso, refinado</td></tr>
+          <tr><td><code>Embarazada</code></td><td>Embaraçada (envergonhada)</td><td>Grávida</td></tr>
+          <tr><td><code>Oficina</code></td><td>Oficina (mecânica)</td><td>Escritório</td></tr>
+          <tr><td><code>Taller</code></td><td>Talher</td><td>Oficina (mecânica, artística)</td></tr>
+          <tr><td><code>Vaso</code></td><td>Vaso (de planta/sanitário)</td><td>Copo (de vidro/plástico)</td></tr>
+          <tr><td><code>Copa</code></td><td>Copa (cozinha)</td><td>Taça (de vinho)</td></tr>
+          <tr><td><code>Saco</code></td><td>Saco (recipiente)</td><td>Paletó, casaco</td></tr>
+          <tr><td><code>Presunto</code></td><td>Presunto (frio/embutido)</td><td>Suposto</td></tr>
+          <tr><td><code>Jubilado</code></td><td>Jubilado (homenageado)</td><td>Aposentado</td></tr>
+        </table>
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        O ENEM frequentemente coloca questões de interpretação baseadas inteiramente na identificação correta de um heterosemântico. Ler <em>exquisito</em> como "estranho" em vez de "delicioso" inverte completamente o sentido de uma crítica gastronômica ou poema!
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Interpretação Textual em Espanhol</div><div class="topic-sub">Estratégias e leitura crítica para o ENEM</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Estratégias de Leitura</h3>
+      <ul>
+        <li><strong>Lectura rápida (Skimming):</strong> Passe os olhos pelo texto para captar a ideia central e o gênero textual (artigo, poema, tirinha, campanha publicitária).</li>
+        <li><strong>Lectura atenta (Scanning):</strong> Busque termos específicos solicitados no enunciado. Lembre-se: o enunciado e as alternativas estão em português!</li>
+        <li><strong>Atenção às conjunções (Conectores):</strong> Elas dão a lógica do texto. Conheça: <em>pero</em> (mas), <em>sin embargo</em> (no entanto), <em>mientras</em> (enquanto), <em>luego</em> (portanto/logo).</li>
+      </ul>
+      <h3>Elementos Não-Verbais</h3>
+      <p>Tirinhas (como Mafalda) e campanhas sociais exigem leitura conjunta de texto e imagem. O humor ou a ironia costumam estar na contradição entre a imagem e a fala.</p>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        Não confie 100% na semelhança com o português. O ENEM escolhe textos que contêm conjunções adversativas, heterosemânticos ou expressões idiomáticas para testar se o estudante realmente compreende a mensagem ou se está apenas "adivinhando".
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FILOSOFIA ==================== -->
+<div class="section" id="sec-filosofia">
+  <span class="area-badge badge-hum">Humanas · Filosofia</span>
+  <div class="section-intro">Prof. Elieuda · Foco: <strong>Existencialismo e Escola de Frankfurt.</strong></div>
+
+  <div class="topic-card open">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Existencialismo</div><div class="topic-sub">Sartre, Camus, Heidegger e a condição humana</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Ideia central</h3>
+      <div class="def-block hum">"A existência precede a essência" (Sartre) — o ser humano não tem natureza fixa; ele se define por suas escolhas e ações.</div>
+      <h3>Conceitos-chave</h3>
+      <ul class="hum">
+        <li><strong>Liberdade radical:</strong> o homem está "condenado a ser livre" — não pode fugir de escolher</li>
+        <li><strong>Responsabilidade:</strong> ao escolher para si, escolhe para toda a humanidade</li>
+        <li><strong>Angústia e náusea:</strong> sentimentos diante da liberdade sem fundamentos</li>
+        <li><strong>Má-fé:</strong> agir como se não tivesse liberdade; se iludir sobre a própria condição</li>
+        <li><strong>O Outro:</strong> "O inferno são os outros" — olhar alheio nos objetifica</li>
+        <li><strong>Absurdo (Camus):</strong> conflito entre busca humana por sentido e o silêncio do universo</li>
+      </ul>
+      <h3>Principais filósofos</h3>
+      <div class="author-grid">
+        <div class="author-card"><div class="author-name">Jean-Paul Sartre</div><div class="author-works">O Ser e o Nada · O Existencialismo é um Humanismo</div></div>
+        <div class="author-card"><div class="author-name">Albert Camus</div><div class="author-works">O Estrangeiro · O Mito de Sísifo</div></div>
+        <div class="author-card"><div class="author-name">Simone de Beauvoir</div><div class="author-works">O Segundo Sexo · existencialismo feminista</div></div>
+        <div class="author-card"><div class="author-name">Heidegger</div><div class="author-works">Ser e Tempo · ser-para-a-morte</div></div>
+      </div>
+      <div class="tip-box hum">
+        <div class="tip-label hum">⚡ Dica ENEM</div>
+        O ENEM adora apresentar situações do cotidiano e perguntar qual conceito existencialista se aplica. Decore: liberdade = responsabilidade + angústia. Má-fé = fingir que não é livre.
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Escola de Frankfurt</div><div class="topic-sub">Teoria Crítica · Adorno, Horkheimer, Habermas</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>O que é</h3>
+      <div class="def-block hum">Movimento filosófico e sociológico alemão (anos 1920) que critica a razão moderna, o capitalismo e a dominação cultural. Une Marx, Freud e Weber.</div>
+      <h3>Conceitos principais</h3>
+      <ul class="hum">
+        <li><strong>Indústria Cultural (Adorno + Horkheimer):</strong> a cultura é produzida como mercadoria para manipular as massas e perpetuar o sistema capitalista</li>
+        <li><strong>Razão Instrumental:</strong> uso da razão apenas para fins práticos/tecnológicos, perdendo dimensão ética e emancipatória</li>
+        <li><strong>Dialética do Esclarecimento:</strong> o iluminismo prometeu libertação mas gerou nova dominação</li>
+        <li><strong>Agir Comunicativo (Habermas):</strong> diálogo racional como base para democracia e entendimento</li>
+      </ul>
+      <div class="tip-box hum">
+        <div class="tip-label hum">⚡ Dica ENEM</div>
+        "Indústria Cultural" é o conceito mais cobrado. Pense em programas de TV populares, música pop, redes sociais — tudo como produto para alienar e não questionar o sistema.
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Walter Benjamin e Simone de Beauvoir</div><div class="topic-sub">Reprodutibilidade técnica e o existencialismo de gênero</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Walter Benjamin – A Obra de Arte na Era de sua Reprodutibilidade Técnica</h3>
+      <div class="def-block hum">
+        <strong>Perda da "Aura":</strong> A reprodução em massa (fotografia, cinema) destrói a "aura" da obra de arte — seu caráter de peça única, autêntica e ligada ao ritual.<br>
+        <strong>Politicização da arte:</strong> Ao perder o valor de culto, a arte passa a ter valor de exposição e torna-se um instrumento político e democrático de contestação (em oposição à estetização da política promovida pelo fascismo).
+      </div>
+      <h3>Simone de Beauvoir – O Existencialismo Feminista</h3>
+      <div class="def-block hum">
+        <strong>"Não se nasce mulher, torna-se mulher":</strong> Aplicação da máxima existencialista ("a existência precede a essência") ao gênero. O gênero feminino não é um destino biológico ou essência natural, mas uma construção social e cultural imposta às mulheres.
+      </div>
+      <h3>Outros Conceitos de Beauvoir</h3>
+      <ul class="hum">
+        <li><strong>O Outro Absoluto:</strong> Historicamente, o homem se autodefine como o "Sujeito" (a norma) e define a mulher como o "Outro" (o desvio, o secundário).</li>
+        <li><strong>Transcendência × Imanência:</strong> A sociedade estimula os homens a buscarem a transcendência (ação, projetos, liberdade) e condena as mulheres à imanência (esfera doméstica, repetição, passividade).</li>
+      </ul>
+      <div class="tip-box hum">
+        <div class="tip-label hum">⚡ Dica ENEM</div>
+        O ENEM cobra muito o conceito de "tornar-se mulher" para discutir o papel social de gênero e a desigualdade de direitos históricos. Em Benjamin, atente para a diferença entre "perda da aura" (democratização da recepção) e a manipulação estética de massas pelo poder autoritário.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SOCIOLOGIA ==================== -->
+<div class="section" id="sec-sociologia">
+  <span class="area-badge badge-hum">Humanas · Sociologia</span>
+  <div class="section-intro">Prof. Irismar · Foco: <strong>Os três clássicos da Sociologia + Bauman.</strong></div>
+
+  <div class="topic-card open">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Karl Marx – Conflito de Classes</div><div class="topic-sub">Materialismo histórico e exploração</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <div class="table-w">
+        <table>
+          <tr><th>Conceito</th><th>Definição</th></tr>
+          <tr><td>Classes sociais</td><td>Burguesia (detém meios de produção) × Proletariado (vende força de trabalho)</td></tr>
+          <tr><td>Mais-valia</td><td>Lucro que o patrão retém ao pagar menos do que o trabalhador produz</td></tr>
+          <tr><td>Alienação</td><td>Trabalhador separado do produto do seu trabalho; não se reconhece nele</td></tr>
+          <tr><td>Infraestrutura</td><td>Base econômica (meios e relações de produção)</td></tr>
+          <tr><td>Superestrutura</td><td>Ideologia, religião, leis — refletem e legitimam a infraestrutura</td></tr>
+          <tr><td>Luta de classes</td><td>Motor da história; conflito entre classes antagônicas</td></tr>
+        </table>
+      </div>
+      <div class="tip-box hum"><div class="tip-label hum">⚡ Dica ENEM</div>Quando a questão falar em "exploração do trabalho", "desigualdade econômica estrutural" ou "consciência de classe" → Marx.</div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Émile Durkheim – Fato Social e Coesão</div><div class="topic-sub">Sociologia como ciência · Solidariedade</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <ul class="hum">
+        <li><strong>Fato social:</strong> maneiras de agir, pensar e sentir externas ao indivíduo, que exercem coerção sobre ele. (Ex: língua, leis, costumes)</li>
+        <li><strong>Solidariedade mecânica:</strong> sociedades tradicionais/homogêneas; coesão pela semelhança</li>
+        <li><strong>Solidariedade orgânica:</strong> sociedades modernas; coesão pela divisão do trabalho e interdependência</li>
+        <li><strong>Anomia:</strong> ausência de normas; desintegração social (crise, suicídio)</li>
+        <li><strong>Função social:</strong> cada instituição cumpre papel para manter a ordem</li>
+      </ul>
+      <div class="tip-box hum"><div class="tip-label hum">⚡ Dica ENEM</div>Quando a questão falar em "normas sociais", "coesão", "instituições" → Durkheim. Anomia aparece em questões sobre crise social.</div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Max Weber – Ação Social e Dominação</div><div class="topic-sub">Compreensão, racionalidade e poder</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Tipos de ação social</h3>
+      <div class="table-w">
+        <table>
+          <tr><th>Tipo</th><th>Motivação</th><th>Exemplo</th></tr>
+          <tr><td>Racional com relação a fins</td><td>Cálculo de meios e fins</td><td>Investir dinheiro para lucrar</td></tr>
+          <tr><td>Racional com relação a valores</td><td>Valores éticos/morais</td><td>Votar por princípio, não por interesse</td></tr>
+          <tr><td>Afetiva</td><td>Emoções e sentimentos</td><td>Ajudar um amigo em crise</td></tr>
+          <tr><td>Tradicional</td><td>Hábito/costume</td><td>Rezar por tradição familiar</td></tr>
+        </table>
+      </div>
+      <h3>Tipos de dominação legítima</h3>
+      <ul class="hum">
+        <li><strong>Tradicional:</strong> baseada em costumes e tradições (rei, patriarca)</li>
+        <li><strong>Carismática:</strong> baseada nas qualidades pessoais do líder</li>
+        <li><strong>Racional-legal:</strong> baseada em leis e normas formais (Estado moderno)</li>
+      </ul>
+      <div class="tip-box hum"><div class="tip-label hum">⚡ Dica ENEM</div>Quando a questão citar "tipos de poder" ou "por que as pessoas obedecem" → Weber e os 3 tipos de dominação.</div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Zygmunt Bauman – Modernidade Líquida</div><div class="topic-sub">Fluidez das relações na contemporaneidade</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <div class="def-block hum">Para Bauman, a sociedade contemporânea é "líquida": as relações, identidades, valores e instituições perderam a solidez e a durabilidade das sociedades "sólidas" modernas.</div>
+      <ul class="hum">
+        <li><strong>Amor líquido:</strong> relações afetivas superficiais, descartáveis, sem comprometimento</li>
+        <li><strong>Identidade líquida:</strong> o sujeito muda de identidade constantemente, sem núcleo fixo</li>
+        <li><strong>Medo líquido:</strong> ansiedade difusa, sem inimigo definido (terrorismo, desemprego, doença)</li>
+        <li><strong>Consumo:</strong> identidade construída pelo que se consome; o desejo supera a necessidade</li>
+        <li><strong>Comunidades guarda-roupa:</strong> conexões temporárias, formadas em torno de eventos efêmeros</li>
+      </ul>
+      <div class="tip-box hum"><div class="tip-label hum">⚡ Dica ENEM</div>Bauman cai em questões sobre redes sociais, consumismo, precarização do trabalho e relacionamentos descartáveis. Pense no Instagram e nos aplicativos de relacionamento.</div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Pierre Bourdieu – Reprodução Social</div><div class="topic-sub">Capital cultural, habitus e violência simbólica</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Os Tipos de Capital</h3>
+      <p>Bourdieu expande o conceito econômico de capital para analisar as desigualdades sociais:</p>
+      <ul class="hum">
+        <li><strong>Capital Econômico:</strong> recursos financeiros, bens materiais, renda.</li>
+        <li><strong>Capital Cultural:</strong> conhecimentos, títulos escolares, domínio da linguagem formal, gostos artísticos herdados da família. É o principal fator de sucesso ou fracasso escolar.</li>
+        <li><strong>Capital Social:</strong> rede de contatos, relações de prestígio ("QI - Quem Indica").</li>
+        <li><strong>Capital Simbólico:</strong> prestígio, honra, reconhecimento social (o poder que legitima os outros capitais).</li>
+      </ul>
+      <h3>Habitus</h3>
+      <div class="def-block hum">
+        Sistema de disposições interiorizadas pelos indivíduos ao longo de sua socialização (família, classe social). Determina gostos, escolhas, percepções e modos de agir sem que o indivíduo tenha plena consciência disso, reproduzindo sua posição social.
+      </div>
+      <h3>Violência Simbólica</h3>
+      <p>Forma de dominação não física, exercida com a cumplicidade daqueles que a sofrem, que a aceitam como natural e legítima (ex: a escola que valoriza apenas a cultura da classe dominante e culpa os estudantes desfavorecidos por seu próprio fracasso).</p>
+      <div class="tip-box hum">
+        <div class="tip-label hum">⚡ Dica ENEM</div>
+        Bourdieu é chave para entender a desigualdade educacional no Brasil. O ENEM costuma cobrar como o sistema escolar reproduz privilégios ao cobrar dos estudantes um "capital cultural" que a própria escola pública não fornece de forma homogênea.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== HISTÓRIA ==================== -->
+<div class="section" id="sec-historia">
+  <span class="area-badge badge-hum">Humanas · História</span>
+  <div class="section-intro">Prof. Kelciane · Foco: <strong>Período Regencial e Segundo Reinado.</strong></div>
+
+  <div class="topic-card open">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Período Regencial (1831–1840)</div><div class="topic-sub">Crise política e revoltas populares</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Contexto</h3>
+      <p>Após a abdicação de D. Pedro I, seu filho tinha apenas 5 anos. O Brasil foi governado por regentes eleitos — período de grande instabilidade política e social.</p>
+      <h3>Tipos de Regência</h3>
+      <ul class="hum">
+        <li><strong>Regência Trina Provisória</strong> (1831) — 3 regentes provisórios</li>
+        <li><strong>Regência Trina Permanente</strong> (1831–34) — eleita pelo Parlamento</li>
+        <li><strong>Regência Una</strong> (1834–40) — após Ato Adicional; um único regente eleito diretamente</li>
+      </ul>
+      <h3>Principais revoltas</h3>
+      <div class="table-w">
+        <table>
+          <tr><th>Revolta</th><th>Local</th><th>Causa principal</th></tr>
+          <tr><td>Cabanagem (1835–40)</td><td>Grão-Pará</td><td>Miserabilidade; índios, mestiços e negros</td></tr>
+          <tr><td>Balaiada (1838–41)</td><td>Maranhão</td><td>Opressão aos pobres livres; escravizados fugidos</td></tr>
+          <tr><td>Sabinada (1837–38)</td><td>Bahia</td><td>Federalismo; elites baianas</td></tr>
+          <tr><td>Farroupilha (1835–45)</td><td>Rio Grande do Sul</td><td>Impostos sobre charque; separatismo gaúcho</td></tr>
+          <tr><td>Revolta dos Malês (1835)</td><td>Bahia</td><td>Insurreição de escravizados muçulmanos</td></tr>
+        </table>
+      </div>
+      <h3>Golpe da Maioridade (1840)</h3>
+      <div class="def-block hum">Parlamentares antecipam a maioridade de D. Pedro II (então com 14 anos) para estabilizar o Brasil e encerrar a agitação regencial.</div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Segundo Reinado (1840–1889)</div><div class="topic-sub">Estabilidade, café, abolição e república</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Características políticas</h3>
+      <ul class="hum">
+        <li>Sistema parlamentarista com "Poder Moderador" do imperador</li>
+        <li>Revezamento entre Partido Liberal e Conservador (parlamentarismo às avessas)</li>
+        <li>Centralização política e relativa estabilidade</li>
+      </ul>
+      <h3>Economia</h3>
+      <ul class="hum">
+        <li>Expansão do café no Sudeste (Vale do Paraíba → Oeste Paulista)</li>
+        <li>Trabalho escravo → imigrante europeu (colonato)</li>
+        <li>Ferrovias e urbanização</li>
+      </ul>
+      <h3>Questão abolicionista</h3>
+      <div class="table-w">
+        <table>
+          <tr><th>Lei</th><th>Ano</th><th>O que fez</th></tr>
+          <tr><td>Eusébio de Queirós</td><td>1850</td><td>Fim do tráfico negreiro</td></tr>
+          <tr><td>Ventre Livre</td><td>1871</td><td>Filhos de escravizadas nascem livres</td></tr>
+          <tr><td>Saraiva-Cotegipe (Sexagenários)</td><td>1885</td><td>Libertos os escravizados com 60+ anos</td></tr>
+          <tr><td>Lei Áurea</td><td>1888</td><td>Abolição total da escravidão</td></tr>
+        </table>
+      </div>
+      <h3>Fim do Segundo Reinado</h3>
+      <ul class="hum">
+        <li>Crise com a Igreja (Questão Religiosa)</li>
+        <li>Crise com militares (Questão Militar)</li>
+        <li>Insatisfação dos fazendeiros pós-abolição</li>
+        <li>Proclamação da República: 15/11/1889 — Marechal Deodoro</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Sociedade, Café e a Era Mauá</div><div class="topic-sub">Modernização, Vale do Paraíba vs Oeste Paulista e infraestrutura</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Divergências Cafeeiras</h3>
+      <div class="table-w">
+        <table>
+          <tr><th>Região</th><th>Mão de Obra</th><th>Mentalidade</th><th>Tecnologia/Solo</th></tr>
+          <tr><td><strong>Vale do Paraíba</strong> (RJ/SP)</td><td>Predominantemente escravizada</td><td>Conservadora, aristocrática</td><td>Técnicas tradicionais, esgotamento rápido do solo</td></tr>
+          <tr><td><strong>Oeste Paulista</strong> (SP)</td><td>Imigrante assalariada (parceria/colonato)</td><td>Burguesa, empresarial, pró-abolição</td><td>Uso de ferrovias, solo fértil de terra roxa</td></tr>
+        </table>
+      </div>
+      <h3>A Era Mauá (Surto Industrial)</h3>
+      <div class="def-block hum">
+        Período entre 1850 e 1870 marcado pelo empreendedorismo de Irineu Evangelista de Sousa (Barão de Mauá). O fim do tráfico negreiro (Lei Eusébio de Queirós) liberou capitais que foram investidos em ferrovias, navegação a vapor, iluminação pública, bancos e fundições, gerando a primeira tentativa de modernização industrial do Brasil imperial.
+      </div>
+      <h3>Limitações e Fim do Surto</h3>
+      <ul>
+        <li>Falta de tarifas protecionistas estatais (Tarifa Alves Branco de 1844 foi afrouxada depois)</li>
+        <li>Oposição da aristocracia agrária escravocrata, que dominava a política</li>
+        <li>Boicote inglês aos empreendimentos industriais de Mauá</li>
+      </ul>
+      <div class="tip-box hum">
+        <div class="tip-label hum">⚡ Dica ENEM</div>
+        O ENEM adora a comparação entre o dinamismo empresarial do Oeste Paulista (ligado ao café moderno) e a decadência conservadora do Vale do Paraíba. Mauá representa a contradição de tentar industrializar um país agrário e escravocrata.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== GEOGRAFIA ==================== -->
+<div class="section" id="sec-geografia">
+  <span class="area-badge badge-hum">Humanas · Geografia</span>
+  <div class="section-intro">Prof. Namíbia · Foco: <strong>Serviços e trabalho no mundo contemporâneo.</strong></div>
+
+  <div class="topic-card open">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Serviços no Mundo e no Brasil</div><div class="topic-sub">Setor terciário e economia de serviços</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Os três setores econômicos</h3>
+      <ul class="hum">
+        <li><strong>Primário:</strong> extração (agricultura, mineração, pesca)</li>
+        <li><strong>Secundário:</strong> transformação (indústria)</li>
+        <li><strong>Terciário (Serviços):</strong> comércio, transporte, saúde, educação, finanças, turismo, TI</li>
+      </ul>
+      <div class="def-block hum">Nos países desenvolvidos, o setor de serviços emprega mais de 70% da população economicamente ativa. No Brasil, é o maior setor em participação no PIB.</div>
+      <h3>Destaques globais</h3>
+      <ul class="hum">
+        <li><strong>Serviços financeiros:</strong> Nova York, Londres, Tóquio (principais centros)</li>
+        <li><strong>Tecnologia (TI):</strong> Vale do Silício, Bangalore (Índia), Shenzhen (China)</li>
+        <li><strong>Turismo:</strong> França e EUA lideram em receita turística</li>
+        <li><strong>Comércio global:</strong> OMC regula; China e EUA são maiores exportadores</li>
+      </ul>
+      <h3>Brasil</h3>
+      <ul class="hum">
+        <li>Setor terciário representa ~70% do PIB</li>
+        <li>Crescimento do agronegócio-serviços (logística, tech)</li>
+        <li>Informalidade alta: ~40% dos trabalhadores informais</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Trabalho no Mundo Contemporâneo</div><div class="topic-sub">Transformações, uberização e desemprego estrutural</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <ul class="hum">
+        <li><strong>Revolução 4.0:</strong> automação, robótica e IA substituem empregos industriais e de serviços rotineiros</li>
+        <li><strong>Uberização:</strong> trabalho sob demanda via plataformas digitais; sem vínculo empregatício</li>
+        <li><strong>Gig economy:</strong> economia de "bicos" — freelancers, entregas, serviços</li>
+        <li><strong>Precarização:</strong> redução de direitos trabalhistas, terceirização, informalidade</li>
+        <li><strong>Desemprego estrutural:</strong> causado por mudanças tecnológicas e econômicas permanentes</li>
+        <li><strong>Home office:</strong> expansão acelerada pós-pandemia (Covid-19, 2020)</li>
+      </ul>
+      <div class="tip-box hum">
+        <div class="tip-label hum">⚡ Dica ENEM</div>
+        Esse tema conecta Bauman (trabalho líquido), Marx (exploração) e Weber (racionalização). Perfeito para redação sobre desigualdade e tecnologia.
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Globalização, Redes e Meio Técnico-Científico-Informacional</div><div class="topic-sub">Milton Santos · Organização espacial contemporânea</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>O Espaço Geográfico na Globalização</h3>
+      <p>A globalização integra o espaço geográfico mundial por meio de fluxos de mercadorias, capitais, informações e pessoas, sustentados por redes físicas e virtuais.</p>
+      <h3>Meio Técnico-Científico-Informacional (MTCI)</h3>
+      <div class="def-block hum">
+        Conceito de Milton Santos para definir a atual etapa de organização do espaço geográfico. Os objetos técnicos (infraestrutura, cidades, indústrias) são criados com base na ciência e no processamento/transmissão instantânea de informações. Informação e técnica são os principais motores da produção e do controle espacial.
+      </div>
+      <h3>Consequências da Globalização no Espaço</h3>
+      <ul class="hum">
+        <li><strong>Espaço Luminoso × Espaço Opaco:</strong> Regiões integradas aos fluxos globais de alta tecnologia e capital versus regiões marginalizadas, sem infraestrutura ou conexão.</li>
+        <li><strong>Compreensão Espaço-Tempo:</strong> A aceleração dos transportes e das telecomunicações reduz a percepção da distância (o mundo parece menor e mais rápido).</li>
+        <li><strong>Globalização como Fábula, Perversidade e Possibilidade:</strong> Milton Santos propõe que a globalização atual funciona como perversidade (aumento das desigualdades), mas há potencial para uma outra globalização mais solidária.</li>
+      </ul>
+      <div class="tip-box hum">
+        <div class="tip-label hum">⚡ Dica ENEM</div>
+        O MTCI é o conceito geográfico mais cobrado no ENEM sobre economia global. Ele explica por que empresas conseguem segmentar sua produção pelo mundo (divisão internacional do trabalho) e por que o setor de serviços e o home office cresceram tanto.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== EDUCAÇÃO FÍSICA ==================== -->
+<div class="section" id="sec-educacao-fisica">
+  <span class="area-badge badge-lin">Linguagens · Educação Física</span>
+  <div class="section-intro">Prof. Apolônio · Foco: <strong>Esportes de Marca e Atletismo</strong> — histórico, corridas, saltos, arremessos e lançamentos.</div>
+
+  <div class="topic-card open">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">1. Esportes de Marca – Atletismo</div><div class="topic-sub">Definição, características e modalidades associadas</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Definição Geral</h3>
+      <div class="def-block hum">
+        Esportes de marca são aqueles em que o desempenho dos atletas é mensurado pelo tempo (segundos, minutos), distância (metros, centímetros) ou peso/carga (quilogramas), comparando-se diretamente os índices alcançados.
+      </div>
+      <h3>Características Principais</h3>
+      <ul>
+        <li>Comparabilidade objetiva por índices de marca</li>
+        <li>Ação motora individualizada contra o tempo, o espaço ou a gravidade</li>
+        <li>Menor interferência direta do adversário sobre o desempenho individual</li>
+        <li>Foco extremo no aperfeiçoamento da técnica e do condicionamento físico</li>
+      </ul>
+      <h3>Diferenciação no Atletismo</h3>
+      <p>O atletismo é a modalidade mãe dos esportes de marca, pois todas as suas provas (corridas, saltos, arremessos) buscam superar uma marca mensurável objetivamente.</p>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        O ENEM costuma cobrar a classificação dos esportes (marca, precisão, invasão, combate, etc.). Lembre-se: se o resultado é definido por um número exato de tempo, distância ou peso, é <strong>Esporte de Marca</strong>! (Exemplos: Atletismo, Natação, Levantamento de Peso, Remo).
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">2. Atletismo – Histórico e Desenvolvimento</div><div class="topic-sub">Origens na antiguidade, evolução e institucionalização moderna</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Origem na Grécia Antiga</h3>
+      <p>O atletismo surgiu junto com os primeiros Jogos Olímpicos da Antiguidade (776 a.C.). A prova mais antiga era o <em>stadium</em> (corrida de cerca de 192 metros). As práticas simulavam habilidades de guerra e sobrevivência (correr, saltar, caçar, lançar).</p>
+      <h3>Evolução e Institucionalização</h3>
+      <ul>
+        <li><strong>Século XIX:</strong> O atletismo moderno ressurge na Inglaterra, associado a escolas e universidades.</li>
+        <li><strong>1896:</strong> Reinício dos Jogos Olímpicos Modernos por Pierre de Coubertin, com o atletismo como esporte central.</li>
+        <li><strong>1912:</strong> Fundação da IAAF (atual <em>World Athletics</em>), estabelecendo regras mundiais unificadas e homologando recordes.</li>
+      </ul>
+      <h3>O Atletismo Hoje</h3>
+      <p>Tornou-se um esporte de alcance global, com grande apelo de mídia e alto nível de especialização científica no treinamento esportivo.</p>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        Do ponto de vista sociocultural, o atletismo reflete a busca humana pela superação física e a geopolítica internacional (jogos olímpicos como vitrine de poder). Conecte a história do atletismo com a mercantilização do esporte e o desenvolvimento de tecnologias de calçados e pistas.
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">3. Atletismo – Corridas</div><div class="topic-sub">Velocidade, meio-fundo, fundo, barreiras e revezamentos</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Divisão das Corridas de Pista</h3>
+      <div class="table-w">
+        <table>
+          <tr><th>Tipo</th><th>Modalidades</th><th>Características Fisiológicas</th></tr>
+          <tr><td>Velocidade / Rasas</td><td>100m, 200m, 400m</td><td>Anaeróbia alática, explosão muscular, largada em blocos</td></tr>
+          <tr><td>Meio-Fundo</td><td>800m, 1500m</td><td>Mista (aeróbia/anaeróbia), ritmo e sprint final</td></tr>
+          <tr><td>Fundo / Resistência</td><td>5000m, 10000m, Maratona (42.195m)</td><td>Aeróbia pura, altíssima resistência cardiovascular e economia de corrida</td></tr>
+          <tr><td>Com Barreiras/Obstáculos</td><td>100m (fem), 110m (masc), 400m barreiras, 3000m c/ obstáculos</td><td>Técnica de transposição e agilidade coordenada</td></tr>
+          <tr><td>Revezamentos</td><td>4x100m e 4x400m</td><td>Esporte coletivo no atletismo, passagem de bastão na "zona de transição"</td></tr>
+        </table>
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        No revezamento 4x100m, a desclassificação por passar o bastão fora da área limite de 30 metros é comum. A técnica de entrega "visual" (4x400m) e "não-visual" (4x100m) é um ponto chave de coordenação motora exigido em questões teóricas.
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">4. Atletismo – Saltos</div><div class="topic-sub">Verticais e Horizontais · Regras e mecânica de movimento</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Saltos Horizontais</h3>
+      <ul>
+        <li><strong>Salto em Distância:</strong> O atleta corre em velocidade e salta a partir de uma tábua de impulsão tentando atingir a maior distância na caixa de areia. Queimar a linha da tábua invalida a tentativa.</li>
+        <li><strong>Salto Triplo:</strong> Sequência de três saltos sucessivos: primeiro com um pé (hop), o segundo com o outro pé (step) e o terceiro caindo na caixa de areia (jump). Exige força excêntrica absurda.</li>
+      </ul>
+      <h3>Saltos Verticais</h3>
+      <ul>
+        <li><strong>Salto em Altura:</strong> Transposição de uma barra horizontal (sarrafo) sem derrubá-la. A técnica mais comum é o <em>Fosbury Flop</em> (de costas).</li>
+        <li><strong>Salto com Vara:</strong> Uso de uma vara flexível para transpor um sarrafo posicionado em grandes alturas.</li>
+      </ul>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        O salto em altura com a técnica <em>Fosbury Flop</em> revolucionou a biomecânica ao permitir que o centro de gravidade do atleta passe por baixo do sarrafo enquanto o corpo passa por cima! Isso explica por que as marcas aumentaram tanto pós-1968.
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">5. Atletismo – Arremessos e Lançamentos</div><div class="topic-sub">Peso, disco, dardo e martelo · Força e alavanca</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Diferença entre Arremesso e Lançamento</h3>
+      <div class="def-block hum">
+        <strong>Arremesso (Peso):</strong> O objeto é empurrado a partir do ombro. O peso deve estar sempre colado ao pescoço no início do movimento.<br>
+        <strong>Lançamento (Disco, Dardo e Martelo):</strong> O objeto é projetado com o braço estendido em um movimento de rotação (disco/martelo) ou corrida retilínea (dardo), gerando energia centrífuga.
+      </div>
+      <h3>Especificações das Provas</h3>
+      <div class="table-w">
+        <table>
+          <tr><th>Prova</th><th>Implemento</th><th>Técnica Principal</th></tr>
+          <tr><td>Arremesso de Peso</td><td>Esfera metálica maciça (7.26kg masc / 4kg fem)</td><td>Linear (O'Brien) ou Rotativa (Baryshnikov)</td></tr>
+          <tr><td>Lançamento de Disco</td><td>Prato circular de madeira/metal (2kg masc / 1kg fem)</td><td>Giro duplo dentro de um círculo de 2,5m</td></tr>
+          <tr><td>Lançamento de Dardo</td><td>Lança de metal/fibra (800g masc / 600g fem)</td><td>Corrida reta e lançamento antes da linha limite</td></tr>
+          <tr><td>Lançamento de Martelo</td><td>Esfera metálica presa a um cabo de aço c/ empunhadura</td><td>Giros rápidos sobre os próprios calcanhares</td></tr>
+        </table>
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        Essas provas envolvem conceitos de física como <strong>lançamento oblíquo de projéteis</strong>, onde o ângulo ideal teórico de lançamento para máxima distância é em torno de 45° (na prática, varia entre 35° e 42° devido à resistência do ar e anatomia humana).
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================== DAY 2: QUIMICA ================== -->
+<div class="section" id="sec-quimica">
+  <span class="area-badge badge-nat">Natureza · Química</span>
+  <div class="section-intro">Prof. Marcos · Foco: <strong>Hidrocarbonetos e funções orgânicas.</strong></div>
+
+  <div class="topic-card open">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Hidrocarbonetos – Visão Geral</div><div class="topic-sub">Propriedades, grupos e nomenclatura</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <div class="def-block nat">Hidrocarbonetos são compostos orgânicos formados apenas por Carbono (C) e Hidrogênio (H).</div>
+      <h3>Grupos Alifáticos (cadeia aberta)</h3>
+      <div class="table-w">
+        <table>
+          <tr><th>Função</th><th>Ligações</th><th>Sufixo</th><th>Exemplo</th></tr>
+          <tr><td>Alcano</td><td>Simples (C–C)</td><td>-ano</td><td>Etano C₂H₆</td></tr>
+          <tr><td>Alceno</td><td>1 dupla (C=C)</td><td>-eno</td><td>Eteno C₂H₄</td></tr>
+          <tr><td>Alcino</td><td>1 tripla (C≡C)</td><td>-ino</td><td>Etino C₂H₂</td></tr>
+          <tr><td>Alcadieno</td><td>2 duplas</td><td>-dieno</td><td>Butadieno</td></tr>
+        </table>
+      </div>
+      <h3>Grupos Aromáticos</h3>
+      <ul class="nat">
+        <li>Possuem anel benzênico (C₆H₆)</li>
+        <li>Ligações alternadas (ressonância)</li>
+        <li>Benzeno, tolueno, naftaleno</li>
+        <li>Usados em: plásticos, corantes, medicamentos</li>
+      </ul>
+      <h3>Haletos Orgânicos</h3>
+      <ul class="nat">
+        <li>Hidrocarboneto com 1+ halogênio (F, Cl, Br, I)</li>
+        <li>Nomenclatura: prefixo flúor/cloro/bromo/iodo + nome do alcano</li>
+        <li>Exemplos: clorofórmio (CHCl₃), freons (CFC), DDT</li>
+      </ul>
+      <h3>Nomenclatura IUPAC – Regras básicas</h3>
+      <ul class="nat">
+        <li>Identifique a cadeia principal (maior cadeia com insaturação)</li>
+        <li>Numere da extremidade mais próxima da ramificação/insaturação</li>
+        <li>Prefixo (nº de carbonos) + infixo (tipo de ligação) + sufixo (-o)</li>
+        <li>Met(1) · Et(2) · Prop(3) · But(4) · Pent(5) · Hex(6)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Funções Oxigenadas e Nitrogenadas</div><div class="topic-sub">Grupos funcionais e identificação no ENEM</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Funções Oxigenadas</h3>
+      <div class="table-w">
+        <table>
+          <tr><th>Função</th><th>Grupo Funcional</th><th>Sufixo</th><th>Exemplo comum</th></tr>
+          <tr><td><strong>Álcool</strong></td><td>R–OH (Hidroxila em C saturado)</td><td>-ol</td><td>Etanol (combustível)</td></tr>
+          <tr><td><strong>Fenol</strong></td><td>Ar–OH (Hidroxila ligada ao anel aromático)</td><td>-ol</td><td>Ácido fênico (desinfetantes)</td></tr>
+          <tr><td><strong>Éter</strong></td><td>R–O–R' (Oxigênio como heteroátomo)</td><td>-óxi- / éter</td><td>Éter dietílico (solvente)</td></tr>
+          <tr><td><strong>Aldeído</strong></td><td>R–CHO (Carbonila na extremidade da cadeia)</td><td>-al</td><td>Metanal (formol)</td></tr>
+          <tr><td><strong>Cetona</strong></td><td>R–CO–R' (Carbonila entre dois carbonos)</td><td>-ona</td><td>Propanona (acetona)</td></tr>
+          <tr><td><strong>Ácido Carboxílico</strong></td><td>R–COOH (Carboxila)</td><td>ácido ... -oico</td><td>Ácido acético (vinagre)</td></tr>
+          <tr><td><strong>Éster</strong></td><td>R–COO–R' (derivado de ácido carboxílico)</td><td>-oato de -ila</td><td>Acetato de etila (flavorizantes)</td></tr>
+        </table>
+      </div>
+      <h3>Funções Nitrogenadas</h3>
+      <div class="table-w">
+        <table>
+          <tr><th>Função</th><th>Grupo Funcional</th><th>Sufixo</th><th>Exemplo comum</th></tr>
+          <tr><td><strong>Amina</strong></td><td>Derivado de NH₃ (substituição por radicais C)</td><td>-amina</td><td>Metilamina, cafeína, nicotina</td></tr>
+          <tr><td><strong>Amida</strong></td><td>Nitrogênio ligado diretamente a uma carbonila (C=O)</td><td>-amida</td><td>Ureia, polímeros (nylon)</td></tr>
+        </table>
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        O ENEM frequentemente apresenta moléculas gigantescas (fármacos, hormônios, defensivos agrícolas) e pede para você identificar quais funções orgânicas estão presentes. Cuidado para não confundir <strong>Amina</strong> (sem carbonila) com <strong>Amida</strong> (nitrogênio colado na carbonila), e <strong>Éter</strong> (R-O-R) com <strong>Éster</strong> (R-COO-R).
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================== FISICA ================== -->
+<div class="section" id="sec-fisica">
+  <span class="area-badge badge-nat">Natureza · Física</span>
+  <div class="section-intro">Prof. Alecsandra · Foco: <strong>Eletrostática e Campo Elétrico.</strong></div>
+
+  <div class="topic-card open">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Eletricidade Estática</div><div class="topic-sub">Cargas, eletrização e lei de Coulomb</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <ul class="nat">
+        <li><strong>Carga elétrica:</strong> propriedade da matéria; unidade: Coulomb (C)</li>
+        <li><strong>Princípio da conservação:</strong> carga total de um sistema isolado não muda</li>
+        <li><strong>Quantização:</strong> carga é múltipla de e = 1,6×10⁻¹⁹ C</li>
+        <li><strong>Atração/Repulsão:</strong> cargas iguais se repelem; opostas se atraem</li>
+      </ul>
+      <h3>Formas de eletrização</h3>
+      <ul class="nat">
+        <li><strong>Atrito:</strong> transferência de elétrons por contato e fricção</li>
+        <li><strong>Contato:</strong> objeto carregado toca neutro → divide carga do mesmo sinal</li>
+        <li><strong>Indução:</strong> objeto carregado se aproxima sem tocar → redistribui cargas</li>
+      </ul>
+      <div class="def-block nat"><strong>Lei de Coulomb:</strong> F = k · |q₁ · q₂| / d²<br>k = 9×10⁹ N·m²/C² (no vácuo)</div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Campo Elétrico</div><div class="topic-sub">Definição, linhas de força e tipos</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <div class="def-block nat"><strong>Campo elétrico:</strong> E = F/q ou E = k·Q/d²<br>Unidade: N/C ou V/m</div>
+      <h3>Tipos de campo</h3>
+      <div class="table-w">
+        <table>
+          <tr><th>Tipo</th><th>Linhas de força</th><th>E</th></tr>
+          <tr><td>Carga pontual +</td><td>Saem radialmente</td><td>Decai com d²</td></tr>
+          <tr><td>Carga pontual –</td><td>Entram radialmente</td><td>Decai com d²</td></tr>
+          <tr><td>Uniforme (2 placas)</td><td>Paralelas e equidistantes</td><td>Constante</td></tr>
+          <tr><td>Condutor esférico</td><td>Fora: como carga pontual; Dentro: E = 0</td><td>Zero interno</td></tr>
+        </table>
+      </div>
+      <h3>Superposição de campos</h3>
+      <p>O campo resultante de várias cargas é a soma vetorial dos campos individuais. O ENEM frequentemente pede o campo em um ponto entre duas cargas.</p>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Potencial Elétrico e Energia Potencial</div><div class="topic-sub">Trabalho da força elétrica e superfícies equipotenciais</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Potencial Elétrico (V)</h3>
+      <div class="def-block nat">
+        Grandeza escalar que mede a energia potencial por unidade de carga em um ponto do campo elétrico. <br>
+        <strong>Fórmula:</strong> V = k · Q / d &nbsp;&nbsp;|&nbsp;&nbsp; Unidade: Volt (V = J/C)
+      </div>
+      <h3>Energia Potencial Eletrostática (Ep)</h3>
+      <div class="def-block nat">
+        Ep = k · q₁ · q₂ / d &nbsp;&nbsp;|&nbsp;&nbsp; Unidade: Joule (J) <br>
+        Cargas de mesmo sinal têm energia potencial positiva (repulsão); sinais opostos têm energia potencial negativa (atração).
+      </div>
+      <h3>Trabalho da Força Elétrica (𝜏) e DDP (U)</h3>
+      <ul class="nat">
+        <li><strong>Diferença de Potencial (DDP / U):</strong> U = V_A - V_B</li>
+        <li><strong>Trabalho:</strong> 𝜏_AB = q · (V_A - V_B) = q · U</li>
+        <li>O trabalho da força elétrica <strong>não depende do caminho</strong> (a força elétrica é conservativa).</li>
+        <li>Cargas positivas se movem espontaneamente para pontos de menor potencial; negativas se movem para maior potencial.</li>
+      </ul>
+      <h3>Superfícies Equipotenciais</h3>
+      <p>Superfícies onde todos os pontos têm o mesmo potencial elétrico. As linhas de campo são sempre perpendiculares às superfícies equipotenciais.</p>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        Gaiola de Faraday (blindagem eletrostática) e o conceito de que o campo elétrico dentro de um condutor em equilíbrio eletrostático é zero (E = 0) enquanto o potencial é constante (V = constante) são cobrados de forma conceitual. Lembre-se também de que o trabalho para mover uma carga sobre uma mesma superfície equipotencial é ZERO (𝜏 = 0).
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================== BIOLOGIA ================== -->
+<div class="section" id="sec-biologia">
+  <span class="area-badge badge-nat">Natureza · Biologia</span>
+  <div class="section-intro">Prof. Carliana · Foco: <strong>Introdução à Genética e 1ª Lei de Mendel.</strong></div>
+
+  <div class="topic-card open">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Conceitos Básicos de Genética</div><div class="topic-sub">Genes, alelos, genótipo e fenótipo</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <div class="table-w">
+        <table>
+          <tr><th>Conceito</th><th>Definição</th></tr>
+          <tr><td>Gene</td><td>Sequência de DNA que determina uma característica</td></tr>
+          <tr><td>Alelo</td><td>Variação de um gene (ex: A e a)</td></tr>
+          <tr><td>Genótipo</td><td>Constituição genética do indivíduo (AA, Aa, aa)</td></tr>
+          <tr><td>Fenótipo</td><td>Característica observável (aparência)</td></tr>
+          <tr><td>Homozigoto</td><td>Dois alelos iguais (AA ou aa)</td></tr>
+          <tr><td>Heterozigoto</td><td>Alelos diferentes (Aa)</td></tr>
+          <tr><td>Dominante</td><td>Alelo que se expressa em Aa (geralmente maiúsculo)</td></tr>
+          <tr><td>Recessivo</td><td>Alelo que só se expressa em aa (minúsculo)</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">1ª Lei de Mendel</div><div class="topic-sub">Lei da Segregação dos Fatores · Cruzamento monoíbrido</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <div class="def-block nat"><strong>1ª Lei:</strong> "Cada caráter é determinado por um par de fatores que se separam na formação dos gametas, indo um fator para cada gameta."</div>
+      <h3>Cruzamento clássico</h3>
+      <p>Pais puros: <strong>AA × aa</strong> → Filhos F1: todos <strong>Aa</strong> (fenotipicamente dominantes)</p>
+      <p>F1 × F1: <strong>Aa × Aa</strong> → proporção genotípica: 1 AA : 2 Aa : 1 aa</p>
+      <p>→ proporção fenotípica: <strong>3 dominantes : 1 recessivo</strong></p>
+      <h3>Quadrado de Punnett</h3>
+      <div class="def-block nat" style="font-family:monospace; font-size:0.82rem">
+        &nbsp;&nbsp;&nbsp;A &nbsp;&nbsp;&nbsp; a<br>
+        A | AA | Aa |<br>
+        a | Aa | aa |
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        Doenças recessivas (fenilcetonúria, albinismo) = só aparecem em <strong>aa</strong>. Doenças dominantes = aparecem em AA e Aa. Muito cobrado com árvores genealógicas!
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Sistema ABO e Heredogramas</div><div class="topic-sub">Polialelia (alelos múltiplos) e genealogias</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Sistema ABO</h3>
+      <div class="def-block nat">
+        Exemplo clássico de alelos múltiplos (polialelia) e codominância na espécie humana. Os alelos envolvidos são Iᴬ, Iᴮ (dominantes entre si) e i (recessivo).
+      </div>
+      <div class="table-w">
+        <table>
+          <tr><th>Grupo (Fenótipo)</th><th>Genótipos possíveis</th><th>Aglutinogênios (Hemácia)</th><th>Aglutininas (Plasma)</th></tr>
+          <tr><td><strong>Grupo A</strong></td><td>IᴬIᴬ ou Iᴬi</td><td>Antígeno A</td><td>Anti-B</td></tr>
+          <tr><td><strong>Grupo B</strong></td><td>IᴮIᴮ ou Iᴮi</td><td>Antígeno B</td><td>Anti-A</td></tr>
+          <tr><td><strong>Grupo AB</strong> (Codominância)</td><td>IᴬIᴮ</td><td>Antígenos A e B</td><td>Nenhuma</td></tr>
+          <tr><td><strong>Grupo O</strong> (Doador universal)</td><td>ii</td><td>Nenhum</td><td>Anti-A e Anti-B</td></tr>
+        </table>
+      </div>
+      <h3>Análise de Heredogramas (Árvores Genealógicas)</h3>
+      <ul class="nat">
+        <li><strong>Quadrado:</strong> Homem | <strong>Círculo:</strong> Mulher | <strong>Pintado:</strong> Indivíduo afetado pela característica.</li>
+        <li><strong>Como descobrir se a característica é Dominante ou Recessiva?</strong> Procure por <strong>pais iguais com filho diferente</strong>. <br>
+          - Se pais afetados têm filho sadio → a característica afetada é <strong>dominante</strong>.<br>
+          - Se pais sadios têm filho afetado → a característica afetada é <strong>recessiva</strong> (os pais são obrigatoriamente heterozigotos Aa).
+        </li>
+      </ul>
+      <div class="tip-box">
+        <div class="tip-label">⚡ Dica ENEM</div>
+        O receptor universal é o sangue <strong>AB Rh+</strong> (não possui nenhuma aglutinina no plasma). O doador universal é o sangue <strong>O Rh-</strong> (não possui nenhum antígeno/aglutinogênio nas hemácias). O ENEM adora misturar genética ABO/Rh com probabilidade em cruzamentos!
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================== ÁLGEBRA ================== -->
+<div class="section" id="sec-algebra">
+  <span class="area-badge badge-mat">Matemática · Álgebra</span>
+  <div class="section-intro">Prof. Kaio · Foco: <strong>Juros simples, compostos e geometria espacial.</strong></div>
+
+  <div class="topic-card open">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Juros Simples</div><div class="topic-sub">Fórmulas e aplicações</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <div class="def-block mat">J = C · i · t &nbsp;&nbsp;|&nbsp;&nbsp; M = C + J = C(1 + i·t)</div>
+      <ul class="mat" style="--accent-lin:var(--accent-mat)">
+        <li><strong>C</strong> = Capital inicial; <strong>i</strong> = taxa (em decimal); <strong>t</strong> = tempo; <strong>M</strong> = Montante</li>
+        <li>Os juros são sempre calculados sobre o capital inicial</li>
+        <li>Crescimento linear</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Juros Compostos</div><div class="topic-sub">Juros sobre juros — regime bancário</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <div class="def-block mat">M = C · (1 + i)ᵗ</div>
+      <ul class="mat">
+        <li>Juros calculados sobre o montante anterior (juros sobre juros)</li>
+        <li>Crescimento exponencial</li>
+        <li>Regra do 72: t ≈ 72/i (anos para dobrar o capital)</li>
+      </ul>
+      <div class="tip-box">
+        <div class="tip-label" style="color:var(--accent-mat)">⚡ Dica ENEM</div>
+        O ENEM adora dar problema com taxa mensal e perguntar anual (ou vice-versa). Atenção às unidades de taxa e tempo — devem estar na mesma unidade!
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Geometria Espacial – Volumes</div><div class="topic-sub">Cilindro, Cone, Prisma e Esfera</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <div class="table-w">
+        <table>
+          <tr><th>Sólido</th><th>Volume</th><th>Área lateral</th></tr>
+          <tr><td>Cilindro</td><td>V = π·r²·h</td><td>A = 2π·r·h</td></tr>
+          <tr><td>Cone</td><td>V = (1/3)·π·r²·h</td><td>A = π·r·g (g=geratriz)</td></tr>
+          <tr><td>Prisma</td><td>V = Abase · h</td><td>A = Pbase · h</td></tr>
+          <tr><td>Esfera</td><td>V = (4/3)·π·r³</td><td>A = 4π·r²</td></tr>
+          <tr><td>Pirâmide</td><td>V = (1/3)·Abase·h</td><td>—</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Estatística Básica</div><div class="topic-sub">Média, mediana e moda · Medidas de tendência central</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Média Aritmética</h3>
+      <ul>
+        <li><strong>Simples (x̄):</strong> Soma de todos os valores dividida pelo número total de elementos. <br>
+          x̄ = (x₁ + x₂ + ... + x_n) / n
+        </li>
+        <li><strong>Ponderada (x̄_p):</strong> Cada valor tem um peso associado. Soma-se o produto dos valores pelos seus pesos e divide-se pela soma dos pesos. <br>
+          x̄_p = (x₁·p₁ + x₂·p₂ + ... + x_n·p_n) / (p₁ + p₂ + ... + p_n)
+        </li>
+      </ul>
+      <h3>Mediana (Md)</h3>
+      <div class="def-block mat">
+        O valor central de um conjunto de dados ordenados em ordem crescente ou decrescente (rol). <br>
+        - Se o número de elementos for <strong>ímpar</strong>: é exatamente o termo central.<br>
+        - Se o número de elementos for <strong>par</strong>: é a média aritmética dos dois termos centrais.
+      </div>
+      <h3>Moda (Mo)</h3>
+      <div class="def-block mat">
+        O valor ou valores que ocorrem com maior frequência no conjunto de dados. Pode ser amodal (nenhum se repete), unimodal (uma moda), bimodal (duas modas), etc.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label" style="color:var(--accent-mat)">⚡ Dica ENEM</div>
+        Este é o tema mais recorrente em toda a prova de Matemática do ENEM! Atenção máxima na **Mediana**: a maior armadilha é esquecer de ordenar os números antes de achar o termo central. Se houver tabela de frequência, calcule a posição acumulada para achar a mediana.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================== GEOMETRIA ================== -->
+<div class="section" id="sec-geometria">
+  <span class="area-badge badge-mat">Matemática · Geometria Analítica</span>
+  <div class="section-intro">Prof. Amanda · Foco: <strong>Reta, circunferência e condição de alinhamento.</strong></div>
+
+  <div class="topic-card open">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Condição de Alinhamento de 3 Pontos</div><div class="topic-sub">Determinante para verificar colinearidade</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <div class="def-block mat">Três pontos A(x₁,y₁), B(x₂,y₂), C(x₃,y₃) são colineares se o determinante da matriz formada pelas coordenadas for igual a zero.</div>
+      <p style="font-family:monospace">|x₁ y₁ 1|<br>|x₂ y₂ 1| = 0<br>|x₃ y₃ 1|</p>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Equação da Reta</div><div class="topic-sub">Geral e Reduzida</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <div class="def-block mat"><strong>Equação Geral:</strong> ax + by + c = 0<br><strong>Equação Reduzida:</strong> y = mx + n<br>m = coeficiente angular (inclinação) | n = coeficiente linear (ponto y)</div>
+      <ul class="mat">
+        <li>m = (y₂ – y₁)/(x₂ – x₁) — calcula a inclinação dados 2 pontos</li>
+        <li>m > 0 → reta crescente; m < 0 → decrescente; m = 0 → horizontal</li>
+        <li>Retas paralelas: mesmo coeficiente angular</li>
+        <li>Retas perpendiculares: m₁ · m₂ = –1</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Circunferência</div><div class="topic-sub">Equação, área e comprimento</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <div class="def-block mat"><strong>Equação Reduzida:</strong> (x–a)² + (y–b)² = r²<br>Centro C(a,b) e raio r<br><br><strong>Equação Geral:</strong> x² + y² + Dx + Ey + F = 0</div>
+      <h3>Área e comprimento</h3>
+      <ul class="mat">
+        <li><strong>Área do círculo:</strong> A = π·r²</li>
+        <li><strong>Comprimento da circunferência:</strong> C = 2π·r</li>
+        <li>π ≈ 3,14159 (o ENEM geralmente fornece ou diz π = 3)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="topic-card">
+    <div class="topic-header" onclick="toggle(this)">
+      <div><div class="topic-title">Distâncias no Plano Cartesiano</div><div class="topic-sub">Distância entre dois pontos e distância de ponto a reta</div></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="topic-body">
+      <h3>Distância entre Dois Pontos</h3>
+      <div class="def-block mat">
+        Dadas as coordenadas de A(x_A, y_A) e B(x_B, y_B), a distância d_AB é a hipotenusa do triângulo retângulo formado pelas diferenças das coordenadas (Teorema de Pitágoras).<br>
+        <strong>Fórmula:</strong> d_AB = √[(x_B - x_A)² + (y_B - y_A)²]
+      </div>
+      <h3>Ponto Médio de um Segmento</h3>
+      <div class="def-block mat">
+        M(x_M, y_M) onde: <br>
+        x_M = (x_A + x_B) / 2 &nbsp;&nbsp;|&nbsp;&nbsp; y_M = (y_A + y_B) / 2
+      </div>
+      <h3>Distância de Ponto a Reta</h3>
+      <div class="def-block mat">
+        A menor distância entre um ponto P(x_0, y_0) e uma reta r: ax + by + c = 0. <br>
+        <strong>Fórmula:</strong> d(P,r) = |a·x_0 + b·y_0 + c| / √(a² + b²)
+      </div>
+      <div class="tip-box">
+        <div class="tip-label" style="color:var(--accent-mat)">⚡ Dica ENEM</div>
+        Problemas cotidianos de localização de antenas, entrega de aplicativos ou alcance de radares no ENEM usam o conceito de distância entre dois pontos. Desenhar o gráfico plano e aplicar Pitágoras diretamente costuma ser mais intuitivo do que decorar a fórmula!
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+  let currentDay = 'day1';
+
+  function showDay(day) {
+    currentDay = day;
+    document.querySelectorAll('.day-btn').forEach((b,i) => {
+      b.classList.toggle('active', (i===0 && day==='day1') || (i===1 && day==='day2'));
+    });
+    document.getElementById('nav-day1').style.display = day==='day1' ? 'flex' : 'none';
+    document.getElementById('nav-day2').style.display = day==='day2' ? 'flex' : 'none';
+
+    if (day === 'day1') showSection('literatura');
+    else showSection('quimica');
+  }
+
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
+    const target = document.getElementById('sec-' + id);
+    if (target) target.classList.add('visible');
+
+    const nav = document.getElementById('nav-' + currentDay);
+    if (nav) {
+      nav.querySelectorAll('.nav-btn').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('onclick').includes("'" + id + "'"));
+      });
+    }
+  }
+
+  function toggle(header) {
+    const card = header.closest('.topic-card');
+    card.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
